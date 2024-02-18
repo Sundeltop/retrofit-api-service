@@ -9,13 +9,11 @@ import java.util.List;
 public interface UserApi {
 
     @GET("users")
-    Call<List<User>> getUsers(@Header("Authorization") String bearerToken);
+    Call<List<User>> getUsers();
 
     @POST("users")
-    Call<User> createUser(@Header("Authorization") String bearerToken,
-                          @Body User user);
+    Call<User> createUser(@Body User user);
 
     @DELETE("users/{id}")
-    Call<Void> deleteUser(@Header("Authorization") String bearerToken,
-                          @Path("id") int id);
+    Call<Void> deleteUser(@Path("id") int id);
 }

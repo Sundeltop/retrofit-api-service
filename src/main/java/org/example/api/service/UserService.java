@@ -16,7 +16,7 @@ public class UserService extends ApiService {
 
     @SneakyThrows
     public List<User> getUsers() {
-        Response<List<User>> response = api.getUsers(BEARER_TOKEN).execute();
+        Response<List<User>> response = api.getUsers().execute();
         assertThat(response.code()).isEqualTo(OK_200.getStatusCode());
 
         return response.body();
@@ -24,7 +24,7 @@ public class UserService extends ApiService {
 
     @SneakyThrows
     public User createUser(User user) {
-        Response<User> response = api.createUser(BEARER_TOKEN, user).execute();
+        Response<User> response = api.createUser(user).execute();
         assertThat(response.code()).isEqualTo(CREATED_201.getStatusCode());
 
         return response.body();
@@ -32,7 +32,7 @@ public class UserService extends ApiService {
 
     @SneakyThrows
     public void deleteUser(int id) {
-        Response<Void> response = api.deleteUser(BEARER_TOKEN, id).execute();
+        Response<Void> response = api.deleteUser(id).execute();
         assertThat(response.code()).isEqualTo(NO_CONTENT_204.getStatusCode());
     }
 }
